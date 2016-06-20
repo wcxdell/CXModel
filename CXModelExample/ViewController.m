@@ -23,12 +23,13 @@
     NSDictionary *dic = @{
                           @"name":@"changxu",
                           @"studentId":@"2016",
-                          @"age":@(24)
+                          @"age":@24,
+                          @"doubleProperty":@12.25,
+                          @"date":@"2016-09-10"
                           };
     Student *student = [Student objectWithJSON:dic];
     
-    NSLog(@"%@",student);
-    
+    NSLog(@"%g",student.doubleProperty);
     
 }
 

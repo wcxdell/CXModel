@@ -9,7 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (CXModel)
-
-
 + (instancetype) objectWithJSON:(id) json;
 @end

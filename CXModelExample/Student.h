@@ -12,4 +12,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *studentId;
 @property (nonatomic, assign) int age;
+@property (nonatomic, assign) double doubleProperty;
+@property (nonatomic, strong) NSDate *date;
 @end
