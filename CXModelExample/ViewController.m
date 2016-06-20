@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
+#import "Student.h"
+#import "CXModel.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +18,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    NSDictionary *dic = @{
+                          @"name":@"changxu",
+                          @"studentId":@"2016",
+                          @"age":@(24)
+                          };
+    Student *student = [Student objectWithJSON:dic];
+    
+    NSLog(@"%@",student);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

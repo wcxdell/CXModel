@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2846E81D17C8EC009652CC /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846E71D17C8EC009652CC /* Student.m */; };
+		1F2846EB1D17CB23009652CC /* NSObject+CXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846EA1D17CB23009652CC /* NSObject+CXModel.m */; };
+		1F2846EF1D17D8C8009652CC /* CXProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846EE1D17D8C8009652CC /* CXProperty.m */; };
 		1FBE43BE1D179F4E0073A3FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43BD1D179F4E0073A3FB /* main.m */; };
 		1FBE43C11D179F4E0073A3FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43C01D179F4E0073A3FB /* AppDelegate.m */; };
 		1FBE43C41D179F4E0073A3FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43C31D179F4E0073A3FB /* ViewController.m */; };
@@ -35,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F2846E61D17C8EC009652CC /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		1F2846E71D17C8EC009652CC /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		1F2846E91D17CB23009652CC /* NSObject+CXModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CXModel.h"; sourceTree = "<group>"; };
+		1F2846EA1D17CB23009652CC /* NSObject+CXModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CXModel.m"; sourceTree = "<group>"; };
+		1F2846EC1D17CED7009652CC /* CXModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXModel.h; sourceTree = "<group>"; };
+		1F2846ED1D17D8C8009652CC /* CXProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXProperty.h; sourceTree = "<group>"; };
+		1F2846EE1D17D8C8009652CC /* CXProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXProperty.m; sourceTree = "<group>"; };
 		1FBE43B91D179F4E0073A3FB /* CXModelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXModelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBE43BD1D179F4E0073A3FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FBE43BF1D179F4E0073A3FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +121,8 @@
 				1FBE43CA1D179F4E0073A3FB /* LaunchScreen.storyboard */,
 				1FBE43CD1D179F4E0073A3FB /* Info.plist */,
 				1FBE43BC1D179F4E0073A3FB /* Supporting Files */,
+				1F2846E61D17C8EC009652CC /* Student.h */,
+				1F2846E71D17C8EC009652CC /* Student.m */,
 			);
 			path = CXModelExample;
 			sourceTree = "<group>";
@@ -144,6 +156,11 @@
 		1FBE43EF1D179F5B0073A3FB /* CXModel */ = {
 			isa = PBXGroup;
 			children = (
+				1F2846E91D17CB23009652CC /* NSObject+CXModel.h */,
+				1F2846EA1D17CB23009652CC /* NSObject+CXModel.m */,
+				1F2846EC1D17CED7009652CC /* CXModel.h */,
+				1F2846ED1D17D8C8009652CC /* CXProperty.h */,
+				1F2846EE1D17D8C8009652CC /* CXProperty.m */,
 			);
 			name = CXModel;
 			sourceTree = "<group>";
@@ -281,6 +298,9 @@
 				1FBE43C41D179F4E0073A3FB /* ViewController.m in Sources */,
 				1FBE43C11D179F4E0073A3FB /* AppDelegate.m in Sources */,
 				1FBE43BE1D179F4E0073A3FB /* main.m in Sources */,
+				1F2846EF1D17D8C8009652CC /* CXProperty.m in Sources */,
+				1F2846EB1D17CB23009652CC /* NSObject+CXModel.m in Sources */,
+				1F2846E81D17C8EC009652CC /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = CXModelExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CX.CXModelExample;
@@ -434,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = CXModelExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CX.CXModelExample;
@@ -506,6 +528,7 @@
 				1FBE43E81D179F4E0073A3FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FBE43E91D179F4E0073A3FB /* Build configuration list for PBXNativeTarget "CXModelExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +537,7 @@
 				1FBE43EB1D179F4E0073A3FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FBE43EC1D179F4E0073A3FB /* Build configuration list for PBXNativeTarget "CXModelExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +546,7 @@
 				1FBE43EE1D179F4E0073A3FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
