@@ -25,7 +25,7 @@
                           @"studentId":@"2016",
                           @"age":@24,
                           @"doubleProperty":@12.25,
-                          @"date":@"2016-09-10"
+                          @"date":@"2016-12-13"
                           };
     Student *student = [Student objectWithJSON:dic];
     
