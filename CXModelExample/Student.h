@@ -14,4 +14,5 @@
 @property (nonatomic, assign) int age;
 @property (nonatomic, assign) double doubleProperty;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) Student *smallStudent;
 @end

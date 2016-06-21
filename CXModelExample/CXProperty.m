@@ -23,18 +23,26 @@
     NSString *typeString = [attrString substringWithRange:NSMakeRange(1, commaLoc - 1)];
     
     static NSArray *numberArray;
+    static NSArray *systemClass;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         numberArray = @[@"d",@"f",@"i",@"l",@"s"];
+        systemClass = @[[NSURL class],[NSDate class],[NSValue class],[NSData class],[NSError class],[NSArray class],[NSDictionary class],[NSString class],[NSAttributedString class]];
     });
     
-    if ([typeString isEqualToString:@"@\"NSString\""]) {
-        cxProperty.type = CXPropertyTypeNSString;
+    if ([[typeString substringToIndex:1] isEqualToString:@"@"]) {
+        NSString *tmp = [typeString substringWithRange:NSMakeRange(2, typeString.length - 3)];
+        if ([tmp isEqualToString:@"NSDate"]) {
+            cxProperty.type = CXPropertyTypeDate;
+        }else if ([systemClass containsObject:NSClassFromString(tmp)]){
+            cxProperty.type = CXPropertyTypeSystem;
+        }else{
+            cxProperty.type = CXPropertyTypeCustom;
+        }
+        cxProperty.typeClass = NSClassFromString(tmp);
     }else if ([numberArray containsObject:typeString]){
         cxProperty.type = CXPropertyTypeNumber;
-    }else if ([typeString isEqualToString:@"@\"NSDate\""]){
-        cxProperty.type = CXPropertyTypeDate;
     }
     
     return cxProperty;

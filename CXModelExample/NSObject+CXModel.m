@@ -37,6 +37,10 @@
             value = CXNSDateFromString(value);
         }
         
+        if (property.type == CXPropertyTypeCustom) {
+            value = [property.typeClass objectWithJSON:value];
+        }
+        
         if (!value || value == [NSNull null]) {
             continue;
         }

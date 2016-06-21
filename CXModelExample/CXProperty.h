@@ -12,8 +12,9 @@
 
 typedef NS_ENUM(NSUInteger,CXPropertyType){
     CXPropertyTypeNumber = 0,
-    CXPropertyTypeNSString,
-    CXPropertyTypeDate
+    CXPropertyTypeSystem,
+    CXPropertyTypeDate,
+    CXPropertyTypeCustom
 };
 
 
@@ -22,6 +23,7 @@ typedef NS_ENUM(NSUInteger,CXPropertyType){
 @property (nonatomic, assign) objc_property_t property;
 @property (nonatomic, copy) NSString *propertyName;
 @property (nonatomic, assign) CXPropertyType type;
+@property (nonatomic, assign) Class typeClass;
 
 
 + (instancetype) initWithProperty:(objc_property_t) property;
