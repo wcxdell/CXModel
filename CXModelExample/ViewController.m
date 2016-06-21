@@ -29,12 +29,40 @@
                           @"smallStudent":@{
                                   @"name":@"changxu",
                                   @"age":@24
-                                  }
+                                  },
+                          @"studentArray":@[
+                                  @{
+                                      @"name":@"changxu",
+                                      @"studentId":@"2015"
+                                      },
+                                  @{
+                                      @"age":@14,
+                                      @"date":@"1992-02-18"
+                                      }
+                                  ]
                           };
-    Student *student = [Student objectWithJSON:dic];
     
-    NSLog(@"%g",student.doubleProperty);
     
+        Student *student = [Student objectWithJSON:dic];
+    
+    
+        NSLog(@"%g",student.doubleProperty);
+    
+//    NSArray *array = @[
+//                       @{
+//                           @"name":@"changxu",
+//                           @"studentId":@"2015"
+//                           },
+//                       @{
+//                           @"age":@14,
+//                           @"date":@"1992-02-18"
+//                           }
+//                       ];
+//    
+//
+//    
+//    NSArray *studentArray = [Student arrayWithJSON:array];
+//    NSLog(@"%@",studentArray);
 }
 
 - (void)didReceiveMemoryWarning {

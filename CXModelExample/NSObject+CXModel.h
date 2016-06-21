@@ -10,4 +10,5 @@
 
 @interface NSObject (CXModel)
 + (instancetype) objectWithJSON:(id) json;
++ (NSArray*) arrayWithJSON:(id) json;
 @end

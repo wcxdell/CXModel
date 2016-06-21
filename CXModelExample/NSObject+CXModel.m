@@ -23,6 +23,22 @@
     return [object setProperties:json];
 }
 
++ (NSArray *)arrayWithJSON:(id)json{
+    json = [json getDic];
+    if (!json || json == [NSNull null]) return nil;
+    
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (NSDictionary *dic in json) {
+        if ([dic isKindOfClass:[NSArray class]]) {
+            [array addObject:[self arrayWithJSON:dic]];
+        }else{
+            [array addObject:[self objectWithJSON:dic]];
+        }
+    }
+    return array;
+}
+
 - (instancetype) setProperties:(NSDictionary*)dic{
     
     //获取属性列表
@@ -35,10 +51,10 @@
         
         if (property.type == CXPropertyTypeDate) {
             value = CXNSDateFromString(value);
-        }
-        
-        if (property.type == CXPropertyTypeCustom) {
+        }else if (property.type == CXPropertyTypeCustom) {
             value = [property.typeClass objectWithJSON:value];
+        }else if (property.type == CXPropertyTypeArray){
+            //TODO:字典中的数组需要用户自己指定类型，用协议实现
         }
         
         if (!value || value == [NSNull null]) {

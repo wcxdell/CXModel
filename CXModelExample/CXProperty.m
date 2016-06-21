@@ -35,6 +35,8 @@
         NSString *tmp = [typeString substringWithRange:NSMakeRange(2, typeString.length - 3)];
         if ([tmp isEqualToString:@"NSDate"]) {
             cxProperty.type = CXPropertyTypeDate;
+        }else if([tmp isEqualToString:@"NSArray"]){
+            cxProperty.type = CXPropertyTypeArray;
         }else if ([systemClass containsObject:NSClassFromString(tmp)]){
             cxProperty.type = CXPropertyTypeSystem;
         }else{

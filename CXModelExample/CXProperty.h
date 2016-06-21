@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger,CXPropertyType){
     CXPropertyTypeNumber = 0,
     CXPropertyTypeSystem,
     CXPropertyTypeDate,
+    CXPropertyTypeArray,
     CXPropertyTypeCustom
 };
 

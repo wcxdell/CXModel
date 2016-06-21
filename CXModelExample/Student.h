@@ -15,4 +15,5 @@
 @property (nonatomic, assign) double doubleProperty;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) Student *smallStudent;
+@property (nonatomic, strong) NSArray *studentArray;
 @end
