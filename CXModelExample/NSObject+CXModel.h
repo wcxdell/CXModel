@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (CXModel)
+@protocol CXModel <NSObject>
+
+@optional
++ (NSDictionary *) classInArray;
+
+@end
+
+@interface NSObject (CXModel) <CXModel>
 + (instancetype) objectWithJSON:(id) json;
 + (NSArray*) arrayWithJSON:(id) json;
 @end

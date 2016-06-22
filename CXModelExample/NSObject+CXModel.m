@@ -13,6 +13,8 @@
 
 #define force_inline static __inline__ __attribute__((always_inline))
 
+
+
 @implementation NSObject (CXModel)
 #pragma mark - Main
 + (instancetype) objectWithJSON:(id) json{
@@ -54,7 +56,10 @@
         }else if (property.type == CXPropertyTypeCustom) {
             value = [property.typeClass objectWithJSON:value];
         }else if (property.type == CXPropertyTypeArray){
-            //TODO:字典中的数组需要用户自己指定类型，用协议实现
+            if ([[self class] respondsToSelector:@selector(classInArray)]) {
+                Class cls = [[self class] getClassFromDic:[[self class] classInArray] withName:property.propertyName];
+                value =  [cls arrayWithJSON:value];
+            }
         }
         
         if (!value || value == [NSNull null]) {
@@ -96,6 +101,14 @@
     }else{
         return self;
     }
+}
+
++ (Class)getClassFromDic:(NSDictionary*)dic withName:(NSString*)name{
+    id value = dic[name];
+    if ([value isKindOfClass:[NSString class]]) {
+        return NSClassFromString(value);
+    }
+    return value;
 }
 
 force_inline NSDate *CXNSDateFromString(__unsafe_unretained NSString *string) {

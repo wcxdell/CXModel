@@ -9,5 +9,9 @@
 #import "Student.h"
 
 @implementation Student
-
++ (NSDictionary *) classInArray{
+    return @{
+             @"studentArray":@"Student"
+             };
+}
 @end
