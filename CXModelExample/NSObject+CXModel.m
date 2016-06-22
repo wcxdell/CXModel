@@ -13,9 +13,14 @@
 
 #define force_inline static __inline__ __attribute__((always_inline))
 
-
+static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
 
 @implementation NSObject (CXModel)
+//init
++ (void)load{
+    propertiesCacheDict = [NSMutableDictionary dictionary];
+}
+
 #pragma mark - Main
 + (instancetype) objectWithJSON:(id) json{
     json = [json getDic];
@@ -44,7 +49,23 @@
 - (instancetype) setProperties:(NSDictionary*)dic{
     
     //获取属性列表
-    NSArray *properties = [[self class] getProperties];
+    static dispatch_semaphore_t lock;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        lock = dispatch_semaphore_create(1);
+    });
+    
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    NSArray *properties = propertiesCacheDict[NSStringFromClass([self class])];
+    dispatch_semaphore_signal(lock);
+    
+    if (!properties) {
+        properties = [[self class] getProperties];
+        dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+        propertiesCacheDict[NSStringFromClass([self class])] = properties;
+        dispatch_semaphore_signal(lock);
+    }
+    
     
     //赋值
     for (CXProperty * property in properties) {

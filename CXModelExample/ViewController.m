@@ -44,7 +44,7 @@
     
     
         Student *student = [Student objectWithJSON:dic];
-    
+        Student *student2 = [Student objectWithJSON:dic];
     
         NSLog(@"%g",student.doubleProperty);
     
