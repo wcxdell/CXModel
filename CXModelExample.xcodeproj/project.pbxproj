@@ -10,14 +10,13 @@
 		1F2846E81D17C8EC009652CC /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846E71D17C8EC009652CC /* Student.m */; };
 		1F2846EB1D17CB23009652CC /* NSObject+CXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846EA1D17CB23009652CC /* NSObject+CXModel.m */; };
 		1F2846EF1D17D8C8009652CC /* CXProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846EE1D17D8C8009652CC /* CXProperty.m */; };
+		1F2846FB1D1ABA31009652CC /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2846FA1D1ABA31009652CC /* Person.m */; };
 		1FBE43BE1D179F4E0073A3FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43BD1D179F4E0073A3FB /* main.m */; };
 		1FBE43C11D179F4E0073A3FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43C01D179F4E0073A3FB /* AppDelegate.m */; };
 		1FBE43C41D179F4E0073A3FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43C31D179F4E0073A3FB /* ViewController.m */; };
 		1FBE43C71D179F4E0073A3FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE43C51D179F4E0073A3FB /* Main.storyboard */; };
 		1FBE43C91D179F4E0073A3FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE43C81D179F4E0073A3FB /* Assets.xcassets */; };
 		1FBE43CC1D179F4E0073A3FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE43CA1D179F4E0073A3FB /* LaunchScreen.storyboard */; };
-		1FBE43D71D179F4E0073A3FB /* CXModelExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43D61D179F4E0073A3FB /* CXModelExampleTests.m */; };
-		1FBE43E21D179F4E0073A3FB /* CXModelExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE43E11D179F4E0073A3FB /* CXModelExampleUITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +44,8 @@
 		1F2846EC1D17CED7009652CC /* CXModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXModel.h; sourceTree = "<group>"; };
 		1F2846ED1D17D8C8009652CC /* CXProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXProperty.h; sourceTree = "<group>"; };
 		1F2846EE1D17D8C8009652CC /* CXProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXProperty.m; sourceTree = "<group>"; };
+		1F2846F91D1ABA31009652CC /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		1F2846FA1D1ABA31009652CC /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		1FBE43B91D179F4E0073A3FB /* CXModelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXModelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBE43BD1D179F4E0073A3FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FBE43BF1D179F4E0073A3FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,11 +57,7 @@
 		1FBE43CB1D179F4E0073A3FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FBE43CD1D179F4E0073A3FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FBE43D21D179F4E0073A3FB /* CXModelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CXModelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FBE43D61D179F4E0073A3FB /* CXModelExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXModelExampleTests.m; sourceTree = "<group>"; };
-		1FBE43D81D179F4E0073A3FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FBE43DD1D179F4E0073A3FB /* CXModelExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CXModelExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FBE43E11D179F4E0073A3FB /* CXModelExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXModelExampleUITests.m; sourceTree = "<group>"; };
-		1FBE43E31D179F4E0073A3FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				1FBE43BB1D179F4E0073A3FB /* CXModelExample */,
-				1FBE43D51D179F4E0073A3FB /* CXModelExampleTests */,
-				1FBE43E01D179F4E0073A3FB /* CXModelExampleUITests */,
 				1FBE43BA1D179F4E0073A3FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +118,8 @@
 				1FBE43BC1D179F4E0073A3FB /* Supporting Files */,
 				1F2846E61D17C8EC009652CC /* Student.h */,
 				1F2846E71D17C8EC009652CC /* Student.m */,
+				1F2846F91D1ABA31009652CC /* Person.h */,
+				1F2846FA1D1ABA31009652CC /* Person.m */,
 			);
 			path = CXModelExample;
 			sourceTree = "<group>";
@@ -133,24 +130,6 @@
 				1FBE43BD1D179F4E0073A3FB /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1FBE43D51D179F4E0073A3FB /* CXModelExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				1FBE43D61D179F4E0073A3FB /* CXModelExampleTests.m */,
-				1FBE43D81D179F4E0073A3FB /* Info.plist */,
-			);
-			path = CXModelExampleTests;
-			sourceTree = "<group>";
-		};
-		1FBE43E01D179F4E0073A3FB /* CXModelExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1FBE43E11D179F4E0073A3FB /* CXModelExampleUITests.m */,
-				1FBE43E31D179F4E0073A3FB /* Info.plist */,
-			);
-			path = CXModelExampleUITests;
 			sourceTree = "<group>";
 		};
 		1FBE43EF1D179F5B0073A3FB /* CXModel */ = {
@@ -297,6 +276,7 @@
 			files = (
 				1FBE43C41D179F4E0073A3FB /* ViewController.m in Sources */,
 				1FBE43C11D179F4E0073A3FB /* AppDelegate.m in Sources */,
+				1F2846FB1D1ABA31009652CC /* Person.m in Sources */,
 				1FBE43BE1D179F4E0073A3FB /* main.m in Sources */,
 				1F2846EF1D17D8C8009652CC /* CXProperty.m in Sources */,
 				1F2846EB1D17CB23009652CC /* NSObject+CXModel.m in Sources */,
@@ -308,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBE43D71D179F4E0073A3FB /* CXModelExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBE43E21D179F4E0073A3FB /* CXModelExampleUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

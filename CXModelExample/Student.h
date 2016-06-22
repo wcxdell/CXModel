@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Person.h"
 
-@interface Student : NSObject
+@interface Student : Person
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *studentId;
 @property (nonatomic, assign) int age;
