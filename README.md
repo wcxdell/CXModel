@@ -5,25 +5,25 @@
 ## 复杂字典转模型
 ```
 NSDictionary *dic = @{
-@"name":@"changxu",
-@"studentId":@"2016",
-@"age":@24,
-@"doubleProperty":@12.25,
-@"date":@"2016-12-13",
-@"smallStudent":@{
-@"name":@"changxu",
-@"age":@24
-},
-@"studentArray":@[
-@{
-@"name":@"changxu",
-@"studentId":@"2015"
-},
-@{
-@"age":@14,
-@"date":@"1992-02-18"
-}
-]
+  @"name":@"changxu",
+  @"studentId":@"2016",
+  @"age":@24,
+  @"doubleProperty":@12.25,
+  @"date":@"2016-12-13",
+  @"smallStudent":@{
+    @"name":@"changxu",
+    @"age":@24
+  },
+  @"studentArray":@[
+    @{
+      @"name":@"changxu",
+      @"studentId":@"2015"
+    },
+    @{
+      @"age":@14,
+      @"date":@"1992-02-18"
+    }
+  ]
 };
 Student *student = [Student objectWithJSON:dic];
 ```
