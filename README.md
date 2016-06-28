@@ -31,9 +31,9 @@ Student *student = [Student objectWithJSON:dic];
 ```
 NSMutableArray *array = [NSMutableArray array];
 for (int i = 0; i<2; i++) {
-Student *tmpStudent = [[Student alloc] init];
-tmpStudent.name = @"changxu";
-[array addObject:tmpStudent];
+  Student *tmpStudent = [[Student alloc] init];
+  tmpStudent.name = @"changxu";
+  [array addObject:tmpStudent];
 }
 
 Student *smallStudent = [[Student alloc] init];
