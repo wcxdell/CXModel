@@ -20,6 +20,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
+
+    [self jsonToModel];
+    [self modelToDic];
+    
+}
+
+//json转模型
+- (void) jsonToModel{
     NSDictionary *dic = @{
                           @"name":@"changxu",
                           @"studentId":@"2016",
@@ -43,26 +51,34 @@
                           };
     
     
-        Student *student = [Student objectWithJSON:dic];
-        Student *student2 = [Student objectWithJSON:dic];
+    Student *student = [Student objectWithJSON:dic];
+    NSLog(@"\n字典转模型\n请自行调试student对象");
+}
+//模型转字典
+- (void) modelToDic{
     
-        NSLog(@"%g",student.doubleProperty);
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i<2; i++) {
+        Student *tmpStudent = [[Student alloc] init];
+        tmpStudent.name = @"changxu";
+        [array addObject:tmpStudent];
+    }
     
-//    NSArray *array = @[
-//                       @{
-//                           @"name":@"changxu",
-//                           @"studentId":@"2015"
-//                           },
-//                       @{
-//                           @"age":@14,
-//                           @"date":@"1992-02-18"
-//                           }
-//                       ];
-//    
-//
-//    
-//    NSArray *studentArray = [Student arrayWithJSON:array];
-//    NSLog(@"%@",studentArray);
+    Student *smallStudent = [[Student alloc] init];
+    smallStudent.name = @"changxu";
+    smallStudent.age = 24;
+    
+    Student *student = [[Student alloc] init];
+    student.name = @"changxu";
+    student.studentId = @"2016";
+    student.age = 24;
+    student.doubleProperty = 12.25;
+    student.smallStudent = smallStudent;
+    student.date = [NSDate date];
+    student.studentArray = array;
+    
+    NSDictionary *testDic = [student dicValues];
+    NSLog(@"\n模型转字典\n%@",testDic);
 }
 
 - (void)didReceiveMemoryWarning {

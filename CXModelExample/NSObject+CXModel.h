@@ -18,4 +18,6 @@
 @interface NSObject (CXModel) <CXModel>
 + (instancetype) objectWithJSON:(id) json;
 + (NSArray*) arrayWithJSON:(id) json;
+- (NSDictionary*) dicValues;
++ (NSArray *) dicArray:(NSArray *) array;
 @end

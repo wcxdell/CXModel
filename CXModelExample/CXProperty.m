@@ -8,6 +8,8 @@
 
 #import "CXProperty.h"
 
+static NSArray *systemClass;
+
 @implementation CXProperty
 
 
@@ -23,12 +25,11 @@
     NSString *typeString = [attrString substringWithRange:NSMakeRange(1, commaLoc - 1)];
     
     static NSArray *numberArray;
-    static NSArray *systemClass;
+    
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         numberArray = @[@"d",@"f",@"i",@"l",@"s"];
-        systemClass = @[[NSURL class],[NSDate class],[NSValue class],[NSData class],[NSError class],[NSArray class],[NSDictionary class],[NSString class],[NSAttributedString class]];
     });
     
     if ([[typeString substringToIndex:1] isEqualToString:@"@"]) {
@@ -37,7 +38,7 @@
             cxProperty.type = CXPropertyTypeDate;
         }else if([tmp isEqualToString:@"NSArray"]){
             cxProperty.type = CXPropertyTypeArray;
-        }else if ([systemClass containsObject:NSClassFromString(tmp)]){
+        }else if ([self isSystemClass:tmp]){
             cxProperty.type = CXPropertyTypeSystem;
         }else{
             cxProperty.type = CXPropertyTypeCustom;
@@ -48,5 +49,17 @@
     }
     
     return cxProperty;
+}
+
++ (BOOL)isSystemClass:(id)cls{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        systemClass = @[[NSURL class],[NSDate class],[NSValue class],[NSData class],[NSError class],[NSArray class],[NSDictionary class],[NSString class],[NSAttributedString class]];
+    });
+    if ([cls isKindOfClass:[NSString class]]) {
+        return [systemClass containsObject:NSClassFromString(cls)];
+    }else {
+        return [systemClass containsObject:cls];
+    }
 }
 @end

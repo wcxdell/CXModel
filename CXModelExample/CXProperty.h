@@ -28,4 +28,5 @@ typedef NS_ENUM(NSUInteger,CXPropertyType){
 
 
 + (instancetype) initWithProperty:(objc_property_t) property;
++ (BOOL) isSystemClass:(id)cls;
 @end

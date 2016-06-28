@@ -30,6 +30,44 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
     return [object setProperties:json];
 }
 
+- (NSDictionary*) dicValues{
+    if ([CXProperty isSystemClass:[self class]]) {
+        return nil;
+    }
+    NSArray *properties = [self propertyList];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    for (CXProperty *property in properties) {
+        id value = [self valueForKey:property.propertyName];
+        
+        if (!value) continue;
+        
+        if (property.type == CXPropertyTypeCustom) {
+            value = [value dicValues];
+        }else if(property.type == CXPropertyTypeDate){
+            NSTimeZone *zone = [NSTimeZone systemTimeZone];
+            NSTimeInterval interval = [zone secondsFromGMTForDate:value];
+            value = [value dateByAddingTimeInterval:interval];
+        }else if (property.type == CXPropertyTypeArray){
+            value = [NSObject dicArray:value];
+        }
+        
+        dic[property.propertyName] = value;
+    }
+    
+    return dic;
+}
+
++ (NSArray *) dicArray:(NSArray*) array{
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    
+    for (id object in array) {
+        [tmpArray addObject:[object dicValues]];
+    }
+    return tmpArray;
+}
+
 + (NSArray *)arrayWithJSON:(id)json{
     json = [json getDic];
     if (!json || json == [NSNull null]) return nil;
@@ -46,8 +84,7 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
     return array;
 }
 
-- (instancetype) setProperties:(NSDictionary*)dic{
-    
+- (NSArray *) propertyList{
     //获取属性列表
     static dispatch_semaphore_t lock;
     static dispatch_once_t onceToken;
@@ -65,8 +102,12 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
         propertiesCacheDict[NSStringFromClass([self class])] = properties;
         dispatch_semaphore_signal(lock);
     }
+    return properties;
+}
+
+- (instancetype) setProperties:(NSDictionary*)dic{
     
-    
+    NSArray *properties = [self propertyList];
     //赋值
     for (CXProperty * property in properties) {
         id value;
