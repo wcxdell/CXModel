@@ -22,19 +22,19 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
 }
 
 #pragma mark - Main
-+ (instancetype) objectWithJSON:(id) json{
-    json = [json getDic];
++ (instancetype) cx_objectWithJSON:(id) json{
+    json = [json cx_getDic];
     if (!json || json == [NSNull null]) return nil;
     
     id object = [[self alloc] init];
-    return [object setProperties:json];
+    return [object cx_setProperties:json];
 }
 
-- (NSDictionary*) dicValues{
+- (NSDictionary*) cx_dicValues{
     if ([CXProperty isSystemClass:[self class]]) {
         return nil;
     }
-    NSArray *properties = [self propertyList];
+    NSArray *properties = [self cx_propertyList];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
@@ -44,13 +44,13 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
         if (!value) continue;
         
         if (property.type == CXPropertyTypeCustom) {
-            value = [value dicValues];
+            value = [value cx_dicValues];
         }else if(property.type == CXPropertyTypeDate){
             NSTimeZone *zone = [NSTimeZone systemTimeZone];
             NSTimeInterval interval = [zone secondsFromGMTForDate:value];
             value = [value dateByAddingTimeInterval:interval];
         }else if (property.type == CXPropertyTypeArray){
-            value = [NSObject dicArray:value];
+            value = [NSObject cx_dicArray:value];
         }
         
         dic[property.propertyName] = value;
@@ -59,32 +59,32 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
     return dic;
 }
 
-+ (NSArray *) dicArray:(NSArray*) array{
++ (NSArray *) cx_dicArray:(NSArray*) array{
     NSMutableArray *tmpArray = [NSMutableArray array];
     
     for (id object in array) {
-        [tmpArray addObject:[object dicValues]];
+        [tmpArray addObject:[object cx_dicValues]];
     }
     return tmpArray;
 }
 
-+ (NSArray *)arrayWithJSON:(id)json{
-    json = [json getDic];
++ (NSArray *)cx_arrayWithJSON:(id)json{
+    json = [json cx_getDic];
     if (!json || json == [NSNull null]) return nil;
     
     NSMutableArray *array = [NSMutableArray array];
     
     for (NSDictionary *dic in json) {
         if ([dic isKindOfClass:[NSArray class]]) {
-            [array addObject:[self arrayWithJSON:dic]];
+            [array addObject:[self cx_arrayWithJSON:dic]];
         }else{
-            [array addObject:[self objectWithJSON:dic]];
+            [array addObject:[self cx_objectWithJSON:dic]];
         }
     }
     return array;
 }
 
-- (NSArray *) propertyList{
+- (NSArray *) cx_propertyList{
     //获取属性列表
     static dispatch_semaphore_t lock;
     static dispatch_once_t onceToken;
@@ -105,9 +105,9 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
     return properties;
 }
 
-- (instancetype) setProperties:(NSDictionary*)dic{
+- (instancetype) cx_setProperties:(NSDictionary*)dic{
     
-    NSArray *properties = [self propertyList];
+    NSArray *properties = [self cx_propertyList];
     //赋值
     for (CXProperty * property in properties) {
         id value;
@@ -116,11 +116,11 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
         if (property.type == CXPropertyTypeDate) {
             value = CXNSDateFromString(value);
         }else if (property.type == CXPropertyTypeCustom) {
-            value = [property.typeClass objectWithJSON:value];
+            value = [property.typeClass cx_objectWithJSON:value];
         }else if (property.type == CXPropertyTypeArray){
             if ([[self class] respondsToSelector:@selector(classInArray)]) {
                 Class cls = [[self class] getClassFromDic:[[self class] classInArray] withName:property.propertyName];
-                value =  [cls arrayWithJSON:value];
+                value =  [cls cx_arrayWithJSON:value];
             }
         }
         
@@ -148,6 +148,8 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
             [propertyArray addObject:cxProperty];
         }
         cls = class_getSuperclass(cls);
+        
+        free(properties);
     }
     return propertyArray;
 }
@@ -155,7 +157,7 @@ static NSMutableDictionary<NSString *,NSArray *> *propertiesCacheDict;
 
 
 #pragma mark - Util
-- (id) getDic{
+- (id) cx_getDic{
     if ([self isKindOfClass:[NSData class]]) {
         return [NSJSONSerialization JSONObjectWithData:(NSData *)self options:kNilOptions error:nil];
     }else if ([self isKindOfClass:[NSString class]]){

@@ -17,9 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    
 
     [self jsonToModel];
     [self modelToDic];
@@ -51,7 +48,7 @@
                           };
     
     
-    Student *student = [Student objectWithJSON:dic];
+    Student *student = [Student cx_objectWithJSON:dic];
     NSLog(@"\n字典转模型\n请自行调试student对象");
 }
 //模型转字典
@@ -77,7 +74,7 @@
     student.date = [NSDate date];
     student.studentArray = array;
     
-    NSDictionary *testDic = [student dicValues];
+    NSDictionary *testDic = [student cx_dicValues];
     NSLog(@"\n模型转字典\n%@",testDic);
 }
 
