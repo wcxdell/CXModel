@@ -25,7 +25,7 @@ NSDictionary *dic = @{
     }
   ]
 };
-Student *student = [Student objectWithJSON:dic];
+Student *student = [Student cx_objectWithJSON:dic];
 ```
 ##模型转字典
 ```
@@ -49,7 +49,7 @@ student.smallStudent = smallStudent;
 student.date = [NSDate date];
 student.studentArray = array;
 
-NSDictionary *testDic = [student dicValues];
+NSDictionary *testDic = [student cx_dicValues];
 ```
 ##说明
 该工具实现了字典模型互转的核心功能，但并不完善，建议用于学习而不是用于实际工程的开发。
